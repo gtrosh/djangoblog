@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Delete Blog Post{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
+    <h1>Delete Post</h1>
+    <br /><br />
+    <h3>Delete: {{ post.title }}</h3>
+    <br />
+    <div class="row g-3">
+        <div class="col-sm-7">
+            <div class="form-control">
+                <form method="POST">
+                    {% csrf_token %}
+                     
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class='btn btn-info'>Delete Post</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a><br />
+                    </div>
+                        {% else%}
+                        You're not allowed here! (And you know it...)
+                        {% endif %}
+                    {% else%}
+                    You're not allowed here! (And you know it...)
+                    
+                    {% endif %}
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}        

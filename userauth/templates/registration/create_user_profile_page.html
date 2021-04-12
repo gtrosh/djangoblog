@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Create a new profile page{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>Create Profile Page</h1>
+    <br /><br />
+    <div class="row g-3">
+        <div class="col-8">
+            <div class="form-control">
+                <form method="POST" enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    {{ form.as_p }} 
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class='btn btn-info'>Create Profile Page</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a><br />
+                    </div>
+
+
+
+                    {% else%}
+                    You're not allowed here! (And you know it...)
+                    
+                    {% endif %}
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}        

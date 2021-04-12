@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Edit Blog Post{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.id == post.author.id %}
+    <h1>Update Post</h1>
+    <br /><br />
+    <div class="row g-3">
+        <div class="col-8">
+            <div class="form-control">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }} 
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class='btn btn-info'>Update</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a><br />
+                    </div>
+                        {% else %}    
+                            You're not allowed here! (And you know it...)
+                        {% endif %}    
+                    {% else%}
+                    You're not allowed here! (And you know it...)
+                    
+                    {% endif %}
+                    <!-- </form> -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}        

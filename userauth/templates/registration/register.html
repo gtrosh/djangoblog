@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+    <h1>Sign Up</h1>
+    <br /><br />
+    <div class="row g-3">
+        <div class="col-sm-7">
+            <div class="form-control">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }} 
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class='btn btn-info'>Sign Up</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a><br />
+                    </div>
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}        

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Comment on Blog Post{% endblock %}
+
+{% block content %}
+    <h1>Add New Comment</h1>
+    <br /><br />
+    <div class="row g-3">
+        <div class="col-8">
+            <div class="form-control">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }} 
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class='btn btn-info'>Add Comment</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a><br />
+                    </div>
+               
+            </div>
+        </div>
+    </div>
+
+{% endblock %}        

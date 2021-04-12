@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}Create a new blog post!{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>Add New Post</h1>
+    <br /><br />
+    <div class="row g-3">
+        <div class="col-8">
+            <div class="form-control">
+                <form method="POST" enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }} 
+                    <div class="d-grid gap-2 d-md-block">
+                        <button class='btn btn-info'>Post</button>
+                        <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a><br />
+                    </div>
+
+                    <script>
+
+                        var name = '{{ user.id }}';
+                        document.getElementById('gvtro').value = name;
+
+                    </script>
+
+                    {% else%}
+                    You're not allowed here! (And you know it...)
+                    
+                    {% endif %}
+                <!-- </form> -->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}        
